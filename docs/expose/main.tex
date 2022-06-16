@@ -6,25 +6,56 @@
 \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2cm,bottom=2.5cm]{geometry}
 \usepackage{setspace}
 \usepackage{fancyhdr}
+\usepackage{cite}
+\usepackage[square,numbers]{natbib}
 
-
-\begin{document}
-
-\singlespacing
+% Settings
+\bibliographystyle{dinat}
 \setlength\parindent{0pt}
 \thispagestyle{fancy}
 
+% Header and Footer
 \fancyhead[LE,LO]{19th June 2022}
 \fancyhead[RE,RO]{Exposé}
 \fancyhead[CE,CO]{Group: \glqq We're not quite sure what we're doing\grqq}
 \fancyfoot{}
 
-\begin{large}
+\begin{document}
+
+\singlespacing
+
+\begin{Large}
 \begin{center}
-\textbf{Sentiment Analysis with Language Patterns about Uncertainty}
+\textbf{Explicit Sentiment Analysis with Language Patterns about Uncertainty}
 \end{center}
-\end{large}
+\end{Large}
 
+\begin{itemize}
+	\setlength\itemsep{-5pt}
+	\item What is your research goal/the research question you are trying to answer?
+	\item Is there any previous/related work?
+	\item What are the necessary steps (research plan)? How will those be distributed among 	team members?
+	\item What data will you use? What preprocessing steps are necessary? Do you need to annotate the data? How will this be done? Manually? With the assistance of e.g. GPT-3?
+	\item What will be the train-validation-test split? How do you prevent train-test leakage?
+	\item Are there baseline datasets or baseline methods for your approach that you will compare your results to?
+	\item Will you train a new model? Will you use an existing model architecture/a pretrained model? Finetuning, head retraining?
+	\item What experiments will you conduct? What will be the evaluation methods/quality criteria/metrics?
+	\item How will you be able to answer the research question based on those experiments?
+\end{itemize}
 
+\begin{itemize}
+	\setlength\itemsep{-5pt}
+	\item The cleaned up/refined dataset (if you release data, provide a datasheet https://arxiv.org/abs/1803.09010)
+	\item The trained model (if you release a model, provide a model card https://arxiv.org/abs/1810.03993)
+	\item For shared tasks: A task description and evaluation scripts
+	\item Evaluation results and plots
+	\item Visualizations and/or interactive demonstrations (if applicable - specify what and in which suitable format)
+\end{itemize}
+
+\hrule
+\vspace{-2.5em}
+\renewcommand{\refname}{}
+\nocite{*}
+\bibliography{literature}
 
 \end{document}
