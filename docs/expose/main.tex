@@ -8,6 +8,7 @@
 \usepackage{fancyhdr}
 \usepackage{cite}
 \usepackage[square,numbers]{natbib}
+\usepackage{graphicx}
 
 % Settings
 \bibliographystyle{dinat}
@@ -30,8 +31,12 @@
 \end{center}
 \end{Large}
 
-Our goal with this project is divided into two parts. First of all we extract a dataset about semantic uncertainty from the web archive data \citep{Kiesel2018}. This dataset is then compared to Sentiment140 \citep{Sent140} to clarify how well our dataset conforms with this popular sentiment classification dataset. In the second part a sentiment classifier based on DistilBERT and finetuned on SST-2 \citep{DistilBert} is trained on our dataset using transfer learning. This model is benchmarked on the previous mentioned dataset to see if our dataset is suited to improve sentiment classification. 
-\\
+Our goal with this project is divided into two parts. First of all we extract a dataset about semantic uncertainty from the web archive data \citep{Kiesel2018}. This dataset is then compared to Sentiment140 \citep{Sent140} to clarify how well our dataset conforms with this sentiment classification dataset. In the second part a sentiment classifier based on DistilBERT and finetuned on SST-2 \citep{DistilBert} is trained on our dataset using transfer learning. This model is benchmarked on the previous mentioned dataset to see if our dataset is suited to improve sentiment classification.
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.55]{language_patterns.png}
+	\caption{The most frequent semantic cues in the English corpora \citep{vincze2014uncertainty}}
+\end{figure}
 
 We will use specific language patterns about uncertainty to extract samples from web archive data. An overview of the patterns can be found here \citep[p. 43]{vincze2014uncertainty}. To classify these samples into positive/negative sentiments we will mainly use GPT-3. Since we cannot fully trust results based on GPT-3 we will verify some of the labels manually. We plan to analyse our dataset based on what topics the internet is most uncertain about and how those topics changed over time using circular packing charts. After the labeling process we want to compare strong positive/negative topics of our data with those of the dataset mentioned above.
 \\
@@ -42,8 +47,8 @@ In the next step we train our model. We prevent train-test leakage with the know
 This leads us to the following two research questions:
 \begin{itemize}
 	\setlength\itemsep{-5pt}
-	\item Does finetuning on uncertain statements improves sentiment classification?
-	\item What are the topics the internet is most uncertain about and have those topics changed over time?
+	\item Does finetuning on uncertain statements improve sentiment classification?
+	\item What are topics the internet is most uncertain about and have those topics changed over time?
 \end{itemize}
 
 The project will be split in the following three work packages:
@@ -57,9 +62,9 @@ The project will be split in the following three work packages:
 Deliverables of the project are:
 \begin{itemize}
 	\setlength\itemsep{-5pt}
-	\item A Dataset consisting of only uncertain statements (inclusive datasheet)
-	\item Visualizations and Analysis of said dataset
-	\item A DistilBERT model trained on said dataset (inclusive model card)
+	\item A Dataset consisting of only uncertain statements (including datasheet)
+	\item Visualizations and analysis of said dataset
+	\item A DistilBERT model trained on said dataset (including model card)
 \end{itemize}
 \medskip
 
