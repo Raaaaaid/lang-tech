@@ -12,10 +12,10 @@
 % Settings
 \bibliographystyle{dinat}
 \setlength\parindent{0pt}
-\thispagestyle{fancy}
+\pagestyle{fancy}
 
 % Header and Footer
-\fancyhead[LE,LO]{19th June 2022}
+\fancyhead[LE,LO]{20th June 2022}
 \fancyhead[RE,RO]{Exposé}
 \fancyhead[CE,CO]{Group: \glqq We're not quite sure what we're doing\grqq}
 \fancyfoot{}
@@ -30,19 +30,19 @@
 \end{center}
 \end{Large}
 
-Our goal with this project is divided into two parts. First of all we extract a dataset about semantic uncertainty from the web archive data \citep{Kiesel2018}. This dataset is then compared to Sentiment140 \citep{Sent140} to clarify how well our dataset conforms with this popular sentiment classification dataset. In the second part a sentiment classifier based on DistilBERT \citep{DistilBert} is trained on our dataset using transfer learning. This model is benchmarked on the previous mentioned dataset to see if our dataset is suited to train sentiment classification. 
+Our goal with this project is divided into two parts. First of all we extract a dataset about semantic uncertainty from the web archive data \citep{Kiesel2018}. This dataset is then compared to Sentiment140 \citep{Sent140} to clarify how well our dataset conforms with this popular sentiment classification dataset. In the second part a sentiment classifier based on DistilBERT and finetuned on SST-2 \citep{DistilBert} is trained on our dataset using transfer learning. This model is benchmarked on the previous mentioned dataset to see if our dataset is suited to improve sentiment classification. 
 \\
 
-We will use specific language patterns about uncertainty to extract samples from web archive data. An overview of the patterns can be found here \citep[p. 43]{vincze2014uncertainty}. To classify these samples into positive/negative sentiments we will mainly use GPT-3. Since we cannot fully trust results based on GPT-3 we will verify some of the labels manually. We plan to analyse our dataset based on what topics the internet is most uncertain about and how those topics changed over time using circular packing charts. After the labeling process we want to compare strong positive/negative topics of our data with those of the dataset mentioned above. So the deliverables from this step are the dataset and visualizations of the comparison.
+We will use specific language patterns about uncertainty to extract samples from web archive data. An overview of the patterns can be found here \citep[p. 43]{vincze2014uncertainty}. To classify these samples into positive/negative sentiments we will mainly use GPT-3. Since we cannot fully trust results based on GPT-3 we will verify some of the labels manually. We plan to analyse our dataset based on what topics the internet is most uncertain about and how those topics changed over time using circular packing charts. After the labeling process we want to compare strong positive/negative topics of our data with those of the dataset mentioned above.
 \\
 
-In the next step we train our model. We prevent train-test leakage with the known train-validation-test split method. The ratios of this split depends on the amount of samples we actually get in the end. We then compare the performance of our model to other models (Quelle mit Ergebnissen von anderen modellen zu diesem datensatz) based on the dataset from above. With these evaluation results we can determine if our data can be used to train sentiment classification.
+In the next step we train our model. We prevent train-test leakage with the known train-validation-test split method. Furthermore we exclude all Twitter domain names from the web archive because Sentiment140 is based on statements from Twitter. The ratios of this split depends on the amount of samples we actually get in the end. We then compare our model and the baseline model with regards to the performance on Sentiment140 dataset.
 \\
 
 This leads us to the following two research questions:
 \begin{itemize}
 	\setlength\itemsep{-5pt}
-	\item Can a dataset consisting only of uncertain statements be used to extract the sentiment of other statements?
+	\item Does finetuning on uncertain statements improves sentiment classification?
 	\item What are the topics the internet is most uncertain about and have those topics changed over time?
 \end{itemize}
 
@@ -50,16 +50,16 @@ The project will be split in the following three work packages:
 \begin{itemize}
 	\setlength\itemsep{-5pt}
 	\item Dataset extraction from the web archive data
-	\item Labeling, analyzing, visualising and the dataset and comparing it to Sentiment140
+	\item Labeling, analyzing, visualizing the dataset and comparing it to Sentiment140
 	\item Train a model and evaluate it on said dataset
 \end{itemize}
 
 Deliverables of the project are:
 \begin{itemize}
 	\setlength\itemsep{-5pt}
-	\item A Dataset consisting of only uncertain statements
+	\item A Dataset consisting of only uncertain statements (inclusive datasheet)
 	\item Visualizations and Analysis of said dataset
-	\item A DistilBERT model trained on said dataset
+	\item A DistilBERT model trained on said dataset (inclusive model card)
 \end{itemize}
 \medskip
 
@@ -68,29 +68,5 @@ Deliverables of the project are:
 \renewcommand{\refname}{}
 \nocite{*}
 \bibliography{literature}
-
-\clearpage
-
-\begin{itemize}
-	\setlength\itemsep{-5pt}
-	\item[x] What is your research goal/the research question you are trying to answer?
-	\item[x] Is there any previous/related work?
-	\item[x] What are the necessary steps (research plan)? How will those be distributed among 	team members?
-	\item[x] What data will you use? What preprocessing steps are necessary? Do you need to annotate the data? How will this be done? Manually? With the assistance of e.g. GPT-3?
-	\item[x] What will be the train-validation-test split? How do you prevent train-test leakage?
-	\item[x] Are there baseline datasets or baseline methods for your approach that you will compare your results to?
-	\item[x] Will you train a new model? Will you use an existing model architecture/a pretrained model? Finetuning, head retraining?
-	\item What experiments will you conduct? What will be the evaluation methods/quality criteria/metrics?
-	\item[x] How will you be able to answer the research question based on those experiments?
-\end{itemize}
-
-\begin{itemize}
-	\setlength\itemsep{-5pt}
-	\item[x] The cleaned up/refined dataset (if you release data, provide a datasheet https://arxiv.org/abs/1803.09010)
-	\item[(x)] The trained model (if you release a model, provide a model card https://arxiv.org/abs/1810.03993)
-	\item[(x)] For shared tasks: A task description and evaluation scripts
-	\item[x] Evaluation results and plots
-	\item[x] Visualizations and/or interactive demonstrations (if applicable - specify what and in which suitable format)
-\end{itemize}
 
 \end{document}
