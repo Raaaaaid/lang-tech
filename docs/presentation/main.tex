@@ -1,0 +1,74 @@
+\documentclass{beamer}
+
+% PACKAGES
+% ----------------------------------------------------------------------------
+\usetheme{Berlin}
+\usepackage{graphicx}
+\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+
+% SETTINGS
+% ----------------------------------------------------------------------------
+\makeatletter
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+\def\beamer@writeslidentry@miniframesoff{%
+  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+  {%else
+    % removed \addtocontents commands
+    \clearpage\beamer@notesactions%
+  }
+}
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+\makeatother
+\beamertemplatenavigationsymbolsempty
+\makeatletter
+\beamer@theme@subsectionfalse%
+\makeatother
+\setbeamertemplate{footline}
+{%
+\begin{beamercolorbox}[wd=1.0\textwidth,ht=2.6ex,dp=1ex,leftskip=.5em,rightskip=.5em]{author in head/foot}%
+\usebeamerfont{author in head/foot}%
+\insertshortauthor\hfill\insertshortinstitute%
+%\insertframenumber{} von \inserttotalframenumber\hfill\insertshortauthor%
+\end{beamercolorbox}%
+%\hspace*{-4.0ex}\hspace*{0.3\textwidth}%
+\begin{beamercolorbox}[wd=1.0\textwidth,ht=2.6ex,dp=1ex,left,leftskip=.5em,rightskip=.5em]{title in head/foot}%
+\usebeamerfont{title in head/foot}%
+\insertshorttitle\hfill\insertframenumber{} / \inserttotalframenumber%
+\end{beamercolorbox}%
+}
+
+% CONFIGURE TITLEPAGE
+% ----------------------------------------------------------------------------
+\title{Explicit Sentiment Analysis with Language Patterns about Uncertainty}
+\subtitle{Project Presentation}
+\author{Jan Albrecht, Paul Brassel, Pascal Singer}
+\institute[]{Group: \glqq We're not quite sure what we're doing\grqq \\ \vspace{0.3cm} Universität Leipzig \\
+Big Data and Language Technologies Seminar}
+\date{04th July 2022}
+\titlegraphic{\vspace{0.5cm}\hspace{8cm}\includegraphics[scale=0.25]{logo.png}}
+
+% DOCUMENT
+% ----------------------------------------------------------------------------
+\begin{document}
+
+\miniframesoff
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+\end{frame}
+
+\begin{frame}
+\end{frame}
+
+\begin{frame}
+\end{frame}
+
+\begin{frame}
+\end{frame}
+
+\end{document}
