@@ -1,4 +1,11 @@
 docs/expose/*
 !docs/expose/*.pdf
 !docs/expose/*.tex
+!docs/expose/*.png
 !docs/expose/*.bib
+
+docs/presentation/*
+!docs/presentation/*.pdf
+!docs/presentation/*.tex
+!docs/presentation/*.png
+
