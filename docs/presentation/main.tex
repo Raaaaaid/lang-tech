@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage[latin1]{inputenc}
 \usepackage[english]{babel}
+\usepackage{hyperref}
 
 % SETTINGS
 % ----------------------------------------------------------------------------
@@ -38,6 +39,7 @@
 \insertshorttitle\hfill\insertframenumber{} / \inserttotalframenumber%
 \end{beamercolorbox}%
 }
+\setbeamerfont{footnote}{size=\tiny}
 
 % CONFIGURE TITLEPAGE
 % ----------------------------------------------------------------------------
@@ -59,16 +61,43 @@ Big Data and Language Technologies Seminar}
 	\titlepage
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Goals}
+	\begin{itemize}
+		\item[1.] Extract a dataset about semantic uncertainty from the web archive data.
+		\begin{itemize}
+			\setlength\itemsep{5pt}
+			\item use specific language patterns about uncertainty
+			\item classify samples into positive/negative sentiments
+			\item compare dataset to sentiment140\footnotemark
+		\end{itemize}
+		\item[2.] Train a sentiment classifier based on DistilBERT on our dataset using transfer learning.
+		\begin{itemize}
+			\setlength\itemsep{5pt}
+			\item classifier is finetuned on SST-2\footnotemark
+			\item benchmark our classifier on sentiment140
+		\end{itemize}
+	\end{itemize}
+	\footnotetext[1]{\url{https://huggingface.co/datasets/sentiment140}}
+	\footnotetext[2]{\url{https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english}}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Language Patterns}
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[scale=0.3]{language_patterns_cutting.png}
+		\caption{The most frequent cues in the English corpora.\footnotemark}
+	\end{figure}
+	\vspace{-0.3cm}
+	\begin{itemize}
+		\item[$\rightarrow$] Does these frequency distribution correspond to our dataset?
+	\end{itemize}
+	\footnotetext[3]{\url{http://doktori.bibl.u-szeged.hu/id/eprint/2291/1/Vincze_Veronika_tezis.pdf}, p. 43}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Dataset}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Model}
 \end{frame}
 
 \end{document}
