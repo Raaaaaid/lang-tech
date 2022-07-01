@@ -2,11 +2,21 @@
 
 % PACKAGES
 % ----------------------------------------------------------------------------
-\usetheme{Berlin}
+\usetheme{Leipzig}
 \usepackage{graphicx}
-\usepackage[latin1]{inputenc}
+\usepackage{fontspec}
 \usepackage[english]{babel}
 \usepackage{hyperref}
+\usepackage[bottom]{footmisc}
+
+% CONFIGURE TITLEPAGE
+% ----------------------------------------------------------------------------
+\title{Explicit Sentiment Analysis with Language Patterns about Uncertainty}
+\subtitle{Project Presentation}
+\author{Jan Albrecht, Paul Brassel, Pascal Singer}
+\institute[]{Group: \glqq We're not quite sure what we're doing\grqq \\ \vspace{0.3cm} Universit\"at Leipzig \\
+Big Data and Language Technologies Seminar}
+\date{04th July 2022}
 
 % SETTINGS
 % ----------------------------------------------------------------------------
@@ -23,9 +33,6 @@
 \newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
 \makeatother
 \beamertemplatenavigationsymbolsempty
-\makeatletter
-\beamer@theme@subsectionfalse%
-\makeatother
 \setbeamertemplate{footline}
 {%
 \begin{beamercolorbox}[wd=1.0\textwidth,ht=2.6ex,dp=1ex,leftskip=.5em,rightskip=.5em]{author in head/foot}%
@@ -41,40 +48,26 @@
 }
 \setbeamerfont{footnote}{size=\tiny}
 
-% CONFIGURE TITLEPAGE
-% ----------------------------------------------------------------------------
-\title{Explicit Sentiment Analysis with Language Patterns about Uncertainty}
-\subtitle{Project Presentation}
-\author{Jan Albrecht, Paul Brassel, Pascal Singer}
-\institute[]{Group: \glqq We're not quite sure what we're doing\grqq \\ \vspace{0.3cm} Universität Leipzig \\
-Big Data and Language Technologies Seminar}
-\date{04th July 2022}
-\titlegraphic{\vspace{0.2cm}\hspace{8cm}\includegraphics[scale=0.25]{logo.png}}
-
 % DOCUMENT
 % ----------------------------------------------------------------------------
 \begin{document}
 
-\miniframesoff
-
-\begin{frame}
-	\titlepage
-\end{frame}
+\maketitle
 
 \begin{frame}{Goals}
 	\begin{itemize}
 		\item[1.] Extract a dataset about semantic uncertainty from the web archive data.
 		\begin{itemize}
 			\setlength\itemsep{5pt}
-			\item use specific language patterns about uncertainty
-			\item classify samples into positive/negative sentiments
-			\item compare dataset to sentiment140\footnotemark
+			\item Use specific language patterns about uncertainty
+			\item Classify samples into positive/negative sentiments
+			\item Compare dataset to Sentiment140\footnotemark
 		\end{itemize}
 		\item[2.] Train a sentiment classifier based on DistilBERT on our dataset using transfer learning.
 		\begin{itemize}
 			\setlength\itemsep{5pt}
-			\item classifier is finetuned on SST-2\footnotemark
-			\item benchmark our classifier on sentiment140
+			\item Baseline classifier is finetuned on SST-2\footnotemark
+			\item Benchmark our classifier on Sentiment140
 		\end{itemize}
 	\end{itemize}
 	\footnotetext[1]{\url{https://huggingface.co/datasets/sentiment140}}
@@ -88,16 +81,28 @@ Big Data and Language Technologies Seminar}
 		\caption{The most frequent cues in the English corpora.\footnotemark}
 	\end{figure}
 	\vspace{-0.3cm}
-	\begin{itemize}
-		\item[$\rightarrow$] Does these frequency distribution correspond to our dataset?
-	\end{itemize}
 	\footnotetext[3]{\url{http://doktori.bibl.u-szeged.hu/id/eprint/2291/1/Vincze_Veronika_tezis.pdf}, p. 43}
 \end{frame}
 
 \begin{frame}{Dataset}
+	\begin{itemize}
+			\setlength\itemsep{5pt}
+			\item Extract data from web archive
+			\item Annotate with Twitter-roBERTA-base-sentiment model\footnotemark
+			\item Topic extraction for web archive dataset
+			\item Compare topic frequency and sentiment with Sentiment140 (Twitter)
+			\item Questions: Which topics is the internet most uncertain about? Have those changed over the years?
+	\end{itemize}
+	\footnotetext[4]{\url{https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest}}
 \end{frame}
 
 \begin{frame}{Model}
+	\begin{itemize}
+			\setlength\itemsep{5pt}
+			\item Train on extracted web archive dataset
+			\item Leave out Twitter URLs of Web Archive to prevent Train-Test-Leakage
+			\item Can transfer learning on exclusively uncertain language samples improve sentiment detection?
+	\end{itemize}
 \end{frame}
 
 \end{document}
