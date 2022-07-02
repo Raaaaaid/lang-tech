@@ -84,25 +84,31 @@ Big Data and Language Technologies Seminar}
 	\footnotetext[3]{\url{http://doktori.bibl.u-szeged.hu/id/eprint/2291/1/Vincze_Veronika_tezis.pdf}, p. 43}
 \end{frame}
 
-\begin{frame}{Dataset}
+\begin{frame}{Task Details}
 	\begin{itemize}
+		\item Dataset
+		\begin{itemize}
 			\setlength\itemsep{5pt}
 			\item Extract data from web archive
 			\item Annotate with Twitter-roBERTA-base-sentiment model\footnotemark
 			\item Topic extraction for web archive dataset
-			\item Compare topic frequency and sentiment with Sentiment140 (Twitter)
 			\item Questions: Which topics is the internet most uncertain about? Have those changed over the years?
+		\end{itemize}
+		\item Model
+		\begin{itemize}
+			\setlength\itemsep{5pt}
+			\item Leave out Twitter URLs of Web Archive to prevent Train-Test-Leakage
+			\item Can transfer learning on exclusively uncertain language samples improve sentiment detection?
+		\end{itemize}
 	\end{itemize}
 	\footnotetext[4]{\url{https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest}}
 \end{frame}
 
-\begin{frame}{Model}
-	\begin{itemize}
-			\setlength\itemsep{5pt}
-			\item Train on extracted web archive dataset
-			\item Leave out Twitter URLs of Web Archive to prevent Train-Test-Leakage
-			\item Can transfer learning on exclusively uncertain language samples improve sentiment detection?
-	\end{itemize}
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.31]{Sent140TestData.png}
+	\end{figure}
 \end{frame}
 
 \end{document}
