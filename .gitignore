@@ -8,5 +8,6 @@ docs/presentation/*
 !docs/presentation/*.pdf
 !docs/presentation/*.tex
 !docs/presentation/*.png
+!docs/presentation/*.sty
 
 dataset/Sentiment140/
