@@ -22,10 +22,12 @@ circles = circlify.circlify(
 labels = queryGroup.index
 
 colormap = cm.get_cmap("bwr_r", polarityGroup.nunique())
-norm = mpl.colors.TwoSlopeNorm(vcenter=0, vmin=polarityGroup.min(), vmax=polarityGroup.max())
+upper = max(abs(polarityGroup.min()), polarityGroup.max())
+lower = -1*max(abs(polarityGroup.min()), polarityGroup.max())
+norm = mpl.colors.TwoSlopeNorm(vcenter=0, vmin=lower, vmax=upper)
 
 # Create just a figure and only one subplot
-fig, ax1 = plt.subplots(figsize=(16,12))
+fig, ax1 = plt.subplots(figsize=(15,12))
 
 ax1.axis("off")
 

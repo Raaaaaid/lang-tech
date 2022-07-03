@@ -9,3 +9,4 @@ docs/presentation/*
 !docs/presentation/*.tex
 !docs/presentation/*.png
 
+dataset/Sentiment140/
